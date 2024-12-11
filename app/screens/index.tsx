@@ -1,24 +1,35 @@
-import {StyleSheet, View, Text} from 'react-native';
-
+import { StyleSheet, View, Text, Pressable } from "react-native";
 
 export default function HomeScreen() {
+  function test() {
+    console.log("TESTE");
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello there</Text>
+      <Pressable style={styles.pressable} onPress={test}>
+        <Text style={styles.text}>Hello there</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
- container: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#F2F333',
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#F2F333",
   },
   text: {
-    fontSize: 80,
-  }
+    fontSize: 60,
+  },
+  pressable: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#0000",
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+  },
 });
