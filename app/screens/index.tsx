@@ -2,27 +2,17 @@ import { useState } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
 export default function HomeScreen() {
+  const [changeColor, setChangeColor] = useState("#FFFF");
+
   const getChangeColor = () => {
-    var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+    const randomColor =`#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setChangeColor(randomColor);
+    console.log('Change color!')
   };
 
-  const [changeColor, setChangeColor] = useState("#0000");
-
-  const changeBgColor = () => {
-    setChangeColor(getChangeColor());
-  };
-
-  function test() {
-    console.log("TESTE");
-  }
   return (
-    <View style={[styles.container, { changeColor }]}>
-      <Pressable style={styles.pressable} onPress={changeBgColor}>
+    <View style={[styles.container, { backgroundColor:changeColor }]}>
+      <Pressable style={styles.pressable} onPress={getChangeColor}>
         <Text style={styles.text}>Hello there</Text>
       </Pressable>
     </View>
@@ -35,7 +25,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
     width: "100%",
-    backgroundColor: "#F2F333",
   },
   text: {
     fontSize: 60,
@@ -43,7 +32,6 @@ const styles = StyleSheet.create({
   pressable: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#0000",
     alignItems: "center",
     justifyContent: "center",
   },
